@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: tsp  # Nom de l'application
+  security:
+    basic:
+      enabled: false
+
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=tspdb  # Remplace par l'URL de ta base MSSQL
+    username: sa  # Ton nom d'utilisateur MSSQL
+    password: <YourStrong@Passw0rd>  # Ton mot de passe MSSQL
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+  jpa:
+    database-platform: org.hibernate.dialect.SQLServer2012Dialect  # Utiliser le dialecte MSSQL
+    show-sql: true  # Afficher les requêtes SQL dans la console (facultatif)
+    hibernate:
+      ddl-auto: update  # Mettre à jour automatiquement le schéma de la base de données
+    properties:
+      hibernate:
+        cache:
+          use_second_level_cache: false  # Désactiver le cache (en développement)
+          use_query_cache: false  # Désactiver le cache des requêtes
+
+  # Si tu n'as pas besoin de la console H2, désactive la configuration H2
+  h2:
+    console:
+      enabled: false  # Désactiver la console H2, elle n'est pas nécessaire ici
+
+jwt:
+  secret: jv6vw5dvPlK2l98L4CllMgE6FCyNXdGnYg9HaEffRw8=
